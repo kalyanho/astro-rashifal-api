@@ -1,0 +1,79 @@
+<!-- 🪐 Daily Rashifal Widget by ChatGPT (Astro + AI) -->
+<div id="rashifal-widget" style="max-width:400px;margin:auto;font-family:'Noto Sans Devanagari',Arial,sans-serif;background-color:#fffdf9;color:#2a1b13;line-height:1.8;padding:16px;border:1px solid #eee;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+  <h2 style="color:#8B0000;text-align:center;">🪐 Daily Rashifal</h2>
+
+  <div style="text-align:center;margin-bottom:12px;">
+    <label for="language">🌐 Language:</label>
+    <select id="language" style="padding:4px 8px;border-radius:8px;">
+      <option value="hi">हिंदी</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
+  <div style="text-align:center;margin-bottom:12px;">
+    <label for="rashi">🔯 राशि चुनें / Select Zodiac:</label>
+    <select id="rashi" style="padding:4px 8px;border-radius:8px;">
+      <option value="">-- Select --</option>
+      <option value="mesh">मेष / Aries</option>
+      <option value="vrishabh">वृषभ / Taurus</option>
+      <option value="mithun">मिथुन / Gemini</option>
+      <option value="kark">कर्क / Cancer</option>
+      <option value="singh">सिंह / Leo</option>
+      <option value="kanya">कन्या / Virgo</option>
+      <option value="tula">तुला / Libra</option>
+      <option value="vrischik">वृश्चिक / Scorpio</option>
+      <option value="dhanu">धनु / Sagittarius</option>
+      <option value="makar">मकर / Capricorn</option>
+      <option value="kumbh">कुंभ / Aquarius</option>
+      <option value="meen">मीन / Pisces</option>
+    </select>
+  </div>
+
+  <button onclick="showRashifal()" style="display:block;width:100%;padding:8px 0;background-color:#8B0000;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;">🔮 देखिए / View</button>
+
+  <div id="rashifal-result" style="margin-top:16px;text-align:center;background:#fffaf4;padding:10px;border-radius:8px;"></div>
+</div>
+
+<script>
+  const rashifalData = {
+    hi: {
+      mesh: "आज का दिन नई शुरुआत के लिए शुभ है। आत्मविश्वास बढ़ेगा और अवसर मिलेंगे।",
+      vrishabh: "धन लाभ के योग हैं, परिवार में खुशी का माहौल रहेगा।",
+      mithun: "संचार में सावधानी रखें, किसी पुराने मित्र से मुलाकात संभव।",
+      kark: "मन थोड़ा भावुक रहेगा, ध्यान और पूजा से शांति मिलेगी।",
+      singh: "कार्यस्थल पर सम्मान बढ़ेगा, नए लोग प्रभावित होंगे।",
+      kanya: "आर्थिक स्थिति में सुधार होगा, मेहनत का फल मिलेगा।",
+      tula: "सम्बंधों में मिठास बढ़ेगी, सहयोगियों से मदद मिलेगी।",
+      vrischik: "आज का दिन रहस्यमय घटनाओं से भरा रहेगा, संयम रखें।",
+      dhanu: "यात्रा योग बन रहा है, मन प्रसन्न रहेगा।",
+      makar: "कार्य में सफलता मिलेगी, परिश्रम करते रहें।",
+      kumbh: "नए विचार आएंगे, रचनात्मक कार्यों में सफलता।",
+      meen: "भावनात्मक स्थिरता बनाए रखें, परिवार का सहयोग मिलेगा।"
+    },
+    en: {
+      mesh: "A great day to start something new. Confidence will rise and opportunities await.",
+      vrishabh: "Financial gains are indicated; family atmosphere will be joyful.",
+      mithun: "Be careful with communication; you may meet an old friend.",
+      kark: "You may feel emotional; meditation will bring peace.",
+      singh: "Your respect will grow at work, and new people will be impressed.",
+      kanya: "Financial improvement is likely; your hard work pays off.",
+      tula: "Relationships sweeten; colleagues will be supportive.",
+      vrischik: "A mysterious day ahead; stay calm and patient.",
+      dhanu: "Travel plans may succeed; you’ll feel cheerful.",
+      makar: "Success at work is assured if you stay dedicated.",
+      kumbh: "Creative ideas will shine; success in innovative tasks.",
+      meen: "Maintain emotional balance; family support will help."
+    }
+  };
+
+  function showRashifal() {
+    const lang = document.getElementById('language').value;
+    const rashi = document.getElementById('rashi').value;
+    const resultDiv = document.getElementById('rashifal-result');
+    if (!rashi) {
+      resultDiv.innerHTML = "<b>कृपया राशि चुनें / Please select a zodiac sign.</b>";
+      return;
+    }
+    resultDiv.innerHTML = rashifalData[lang][rashi];
+  }
+</script>
